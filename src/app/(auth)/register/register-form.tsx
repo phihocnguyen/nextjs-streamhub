@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { registerSchema } from "@/schemas"
-import { register } from "@/actions/register"
+import { register } from "@/actions/auth/register"
 import { useState, useTransition } from "react"
 import PopupVerification from "@/components/ui/auth/popup-verification"
 

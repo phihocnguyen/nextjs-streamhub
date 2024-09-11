@@ -15,14 +15,21 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
-  emailVerified DateTime? @map("email_verified")
+  email         String?        @unique
+  emailVerified DateTime?      @map("email_verified")
   image         String?
   password      String?
-  role          UserRole  @default(USER)
+  role          UserRole       @default(USER)
   accounts      Account[]
+  Post          Post[]
+  Comment       Comment[]
+  Story         Story[]
+  Follower      Follower[]
+  conversations Conversation[]
+  seenMessages  Message[]      @relation("Seen")
+  messages      Message[]
 
   @@map("users")
 }
@@ -54,4 +61,67 @@ model VerificationToken {
   expires DateTime
 
   @@unique([email, token])
+}
+
+model Post {
+  id         String    @id @default(cuid())
+  date       DateTime
+  image_path String?
+  content    String?
+  totalLike  Int       @default(0) @map("total_like")
+  authorId   String    @map("author_id")
+  author     User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  isLiked    Boolean   @map("is_liked")
+  Comment    Comment[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id      String @id @default(cuid())
+  userId  String @map("user_id")
+  postId  String @map("post_id")
+  content String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model Story {
+  id       String   @id @default(cuid())
+  userId   String   @map("user_id")
+  dateTime DateTime @default(now())
+  content  String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Follower {
+  id       String @id @default(cuid())
+  userId   String @map("user_id")
+  followId String @map("follower_id")
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("followers")
+}
+
+model Conversation {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+  name          String?
+
+  messages Message[]
+  users    User[]
+}
+
+model Message {
+  id           String         @id @default(cuid())
+  body         String?
+  createdAt    DateTime       @default(now())
+  Conversation Conversation[]
+  seen         User[]         @relation("Seen")
+  sender       User?          @relation(fields: [senderId], references: [id])
+  senderId     String?
 }

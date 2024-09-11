@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import AppProvider from "@/app/AppProvider";
 import { cookies } from "next/headers";
+import { EdgeStoreProvider } from "@/lib/edgestore";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +27,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
+        <SessionProvider>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+            <EdgeStoreProvider>
+              {children}
+            </EdgeStoreProvider>
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

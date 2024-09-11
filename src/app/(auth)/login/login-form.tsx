@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { loginSchema } from "@/schemas"
-import { login } from "@/actions/login"
+import { login } from "@/actions/auth/login"
 import { useTransition } from "react"
 import { FaGithub } from "react-icons/fa";
 import { signIn } from 'next-auth/react'

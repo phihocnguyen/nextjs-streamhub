@@ -16,7 +16,7 @@ import { CiSearch } from "react-icons/ci";
 const Header = () => {
     return ( 
         <>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between px-12 py-2 bg-white">
                 <h2 className="text-black text-center text-[18px] font-bold dark:text-white">Stream<span className="text-[#CB71E1]">Hub</span></h2>
                 <div className="bg-[#FAFAFA] flex items-center flex-1 mx-4 border focus-within:border-black rounded-md px-4">
                     <CiSearch className=" text-[24px]"/>
@@ -26,7 +26,7 @@ const Header = () => {
                     <IoIosNotificationsOutline className="text-[28px] text-black"/>
                 </div>
                 <div className="ml-6 cursor-pointer">
-                    <DropdownMenu>
+                    <DropdownMenu modal = {false}>
                         <DropdownMenuTrigger asChild>
                             <Avatar>
                                 <AvatarImage src="https://avatars.githubusercontent.com/u/85166295?v=4" />

@@ -1,5 +1,8 @@
+'use client'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useCurrentUser } from "@/hooks/use-current-user";
 const Profile = () => {
+    const currentUser = useCurrentUser()
     return ( 
         <div className="rounded-md flex flex-col items-center py-4">
             <div className="flex items-center">
@@ -10,8 +13,8 @@ const Profile = () => {
                     </Avatar>
                 </div>
                 <div className="ml-4">
-                    <p className="text-[16px]">Anna Smith</p>
-                    <p className="text-[#A9A2AA] text-[12px]">@Annasmith19</p>
+                    <p className="text-[16px]">{currentUser?.name}</p>
+                    <p className="text-[#A9A2AA] text-[12px]">{currentUser?.email}</p>
                 </div>
             </div>
             <div className="flex mt-4">

@@ -1,40 +1,46 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
-import { IoHomeOutline } from "react-icons/io5";
+import { FaHome } from "react-icons/fa";
+import { FaUserFriends } from "react-icons/fa";
+import { MdEvent } from "react-icons/md";
+import { IoMdPhotos } from "react-icons/io";
+import { BiSolidVideos } from "react-icons/bi";
+import { FaShoppingCart } from "react-icons/fa";
+import { IoIosSettings } from "react-icons/io";
 const Navigation = () => {
     return ( 
         <>
-            <div className="border-b">
+            <div className="border-b px-8">
                 <Link href ='/' className="flex items-center rounded-md bg-[#D58EE7] text-white p-2 mb-2">
-                    <IoHomeOutline className="font-bold text-[20px]"/>
+                    <FaHome className="font-bold text-[20px]"/>
                     <p className="ml-6 text-[14px]">Home</p>
                 </Link>
                 <Link href ='/' className="flex items-center rounded-md  text-black p-2 mb-2">
-                    <IoHomeOutline className="font-bold text-[20px]"/>
-                    <p className="ml-6 text-[14px]">Home</p>
+                    <FaUserFriends className="font-bold text-[20px]"/>
+                    <p className="ml-6 text-[14px]">Friends</p>
                 </Link>
                 <Link href ='/' className="flex items-center rounded-md  text-black p-2 mb-2">
-                    <IoHomeOutline className="font-bold text-[20px]"/>
-                    <p className="ml-6 text-[14px]">Home</p>
+                    <MdEvent className="font-bold text-[20px]"/>
+                    <p className="ml-6 text-[14px]">Event</p>
                 </Link>
                 <Link href ='/' className="flex items-center rounded-md  text-black p-2 mb-2">
-                    <IoHomeOutline className="font-bold text-[20px]"/>
-                    <p className="ml-6 text-[14px]">Home</p>
+                    <IoMdPhotos className="font-bold text-[20px]"/>
+                    <p className="ml-6 text-[14px]">Photos</p>
                 </Link>
                 <Link href ='/' className="flex items-center rounded-md  text-black p-2 mb-2">
-                    <IoHomeOutline className="font-bold text-[20px]"/>
-                    <p className="ml-6 text-[14px]">Home</p>
+                    <BiSolidVideos className="font-bold text-[20px]"/>
+                    <p className="ml-6 text-[14px]">Watch Videos</p>
                 </Link>
                 <Link href ='/' className="flex items-center rounded-md  text-black p-2 mb-2">
-                    <IoHomeOutline className="font-bold text-[20px]"/>
-                    <p className="ml-6 text-[14px]">Home</p>
+                    <FaShoppingCart className="font-bold text-[20px]"/>
+                    <p className="ml-6 text-[14px]">Marketplace</p>
                 </Link>
                 <Link href ='/' className="flex items-center rounded-md  text-black p-2 mb-2">
-                    <IoHomeOutline className="font-bold text-[20px]"/>
-                    <p className="ml-6 text-[14px]">Home</p>
+                    <IoIosSettings className="font-bold text-[20px]"/>
+                    <p className="ml-6 text-[14px]">Setting</p>
                 </Link>
             </div>
-            <div className="mt-4">
+            <div className="mt-4 px-8">
                 <p className="mb-2 text-[14px]">PAGES YOU LIKE</p>
                 <div className="flex items-center">
                     <div>
